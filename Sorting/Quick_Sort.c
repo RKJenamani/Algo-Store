@@ -3,19 +3,25 @@
 
 int partition(int a[],int lower,int upper)
 {
-	int i,j,pivot,temp;
+	int i,j,pivot,temp,pivot_index;
 	pivot=a[lower];
+	pivot_index=lower;
 	j=lower;
 	for(i=lower;i<=upper;i++)
 	{
 		if(a[i]<pivot)
 		{
+			if(a[j]==pivot)
+				pivot_index=i;
 			temp=a[j];
 			a[j]=a[i];
 			a[i]=temp;
 			j++;
 		}
 	}
+	temp=a[j];
+	a[j]=a[pivot_index];
+	a[pivot_index]=temp;
 	return j;
 }
 
