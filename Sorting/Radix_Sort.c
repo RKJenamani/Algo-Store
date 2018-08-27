@@ -6,7 +6,7 @@ int radix_sort(int a[],int b[],int n,int m)
 	int i,j=0,output[100],temp[100],l=1;
 	while(l!=n)
 	{
-		for(i=0;i<=n;i++)
+		for(i=0;i<=10;i++)
 			b[i]=0;
 		for(i=0;i<m;i++)
 		{
@@ -14,7 +14,7 @@ int radix_sort(int a[],int b[],int n,int m)
 			b[temp[i]]++;
 
 		}
-		for(i=1;i<=n;i++)
+		for(i=1;i<=10;i++)
 			b[i]=b[i-1]+b[i];
 		for(i=m-1;i>=0;i--)
 			output[--b[temp[i]]]=a[i];

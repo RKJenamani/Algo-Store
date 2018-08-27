@@ -24,19 +24,25 @@ void bucket_sort( NODEPTR table[],float a[],int n,int m)
 		else
 		{
 			temp=table[index];
-			insert=temp;
-			while(temp->next!=NULL && temp->value<a[i])
-			{	
-				insert=temp;
-				temp=temp->next;
+			if(a[i]<temp->value)
+			{
+				new->next=temp;
+				table[index]=new;
 			}
-			if(temp->next==NULL)
-				temp->next=new;
 			else
 			{
-				new->next=temp->next;
-				temp->next=new;
-			}
+				while(temp->next!=NULL && temp->next->value < a[i])
+				{	
+					temp=temp->next;
+				}
+			
+				if(temp->next==NULL)
+					temp->next=new;
+				else
+				{
+					new->next=temp->next;
+					temp->next=new;
+			}	}
 		}
 	}
 	index=0;
