@@ -141,6 +141,74 @@ void preorder(NODEPTR x)
 	}
 }
 
+NODEPTR delete(NODEPTR root, int key)
+{
+	NODEPTR N;
+	N=search(root,key);
+	NODEPTR M=N->parent;
+	while(root!=NULL)
+	{
+		if(N->left==NULL && N->right==NULL)
+		{
+			if(N->parent==NULL) 
+				return NULL;
+			NODEPTR temp=N->parent;
+			if(temp->left==N)
+				temp->left=NULL;
+			else
+				temp->right=NULL;
+			N->parent=NULL;
+			break;
+		}
+		else if(N->left==NULL)
+		{
+			NODEPTR temp=N->right;
+			N->right==NULL;
+			temp->parent=N->parent;
+			if(N->parent!=NULL)
+			{
+				if(temp->parent->left==N)
+					temp->parent->left=temp;
+				else
+					temp->parent->right=temp;
+			}
+			else
+				root=temp;
+			N->parent=NULL;
+			break;
+		}
+		else if(N->right==NULL)
+		{
+			NODEPTR temp=N->left;
+			N->left=NULL;
+			temp->parent=N->parent;
+			if(N->parent!=NULL)
+			{
+				if(temp->parent->left==N)
+					temp->parent->left=temp;
+				else
+					temp->parent->right=temp;
+			}
+			else
+				root=temp;
+			N->parent=NULL;
+			break;
+		}
+		else
+		{
+			NODEPTR temp=successor(N);
+			N->value=temp->value;
+			N=temp;	
+		}	
+	}
+	if(M!=NULL)
+	{
+		root=lift_insert(root,M);
+	}
+	return root;
+	
+}
+
 void main()
 {
 	int n,i,s;
