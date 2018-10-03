@@ -1,2 +1,35 @@
 # Algo-Store
 Contains various programming algorithms ready to be copy-pasted in your code! :D
+
+for Hacktoberfest!!
+
+Contributing to this repo
+
+Add your favourite competitive programming questions along with the solution.
+
+Guidelines
+
+    Create a folder with the question name.
+    Add a .txt file with the problem statement and a solution file(preferably c or cpp) which contains the solution of the given problem.
+
+Getting Started
+
+    Fork this repo (button on top)
+    Star this repo (button on top)
+    Clone on your local machine
+
+git clone https://github.com/your-username/Algo-Store.git
+
+    Create a new folder with the question name.
+    Add your question and solution file in that folder.
+    Commit and push
+
+git add .
+git commit -m 'Added question-name'
+git push origin master
+
+    Create a new pull request from your forked repository
+    Your PR gets merged! jack_o_lantern
+    Now you can help others do the same.
+
+Happy Coding! :)
