@@ -6,7 +6,8 @@ This repo is open for all. Add your favourite competitive programming questions 
 
 ## Guidelines
 
-- Create a  folder with the question name.
+- All insertions must only be made in the "Problems and Solutions" folders present.
+- In the appropriate "Problems and Solutions" folder, create a folder with the question name.
 - Add a .txt file with the problem statement and a solution file (preferably C or CPP) which contains the solution of the given problem.
 
 ## Getting Started
@@ -19,7 +20,7 @@ This repo is open for all. Add your favourite competitive programming questions 
 git clone https://github.com/your-username/Algo-Store.git
 ```
 
-- Create a new folder with the question name.
+- In the appropriate appropriate "Problems and Solutions" folder, create a new folder with the question name.
 - Add your question and solution file in that folder. 
 - Commit and push
 
