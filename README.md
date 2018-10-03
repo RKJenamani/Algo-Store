@@ -2,7 +2,7 @@
 Contains various programming algorithms ready to be copy-pasted in your code! :D
 
 # Hacktoberfest special
-This repo is open for all. Add your favourite competitive programming questions along with the solution.
+This repo is open for all. Add your favourite competitive programming questions along with the solution in the appropriate folders.
 
 ## Guidelines
 
