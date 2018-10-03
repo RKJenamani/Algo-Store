@@ -30,7 +30,7 @@ void quick_sort(int a[],int lower,int upper)
 	if(lower<upper)
 	{
 		int pi=partition(a,lower,upper);
-		quick_sort(a,lower,pi);
+		quick_sort(a,lower,pi-1);
 		quick_sort(a,pi+1,upper);
 	}
 }
