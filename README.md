@@ -6,7 +6,7 @@ This repo is open for all. Add your favourite competitive programming questions 
 
 ## Guidelines
 
-- All insertions must only be made in the "Problems and Solutions" folder present.
+- **All changes must only be made in the "Problems and Solutions" folder present.**
 - In the "Problems and Solutions" folder, create a folder with the question name.
 - Add a .txt file with the problem statement and a solution file (preferably C or CPP) which contains the solution of the given problem.
 
