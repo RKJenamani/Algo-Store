@@ -117,11 +117,10 @@ void create_list(node *adj_list[],int n, edg edges[], int m)
 	}
 }
 
-void BFS(node *adj_list[],int n)
+void BFS(node *adj_list[],int n,int parent[],int v)
 {
 	int i,visited[100];
 	int distance[100];
-	int parent[100];
 	int current;
 	node* temp;
 
@@ -134,10 +133,10 @@ void BFS(node *adj_list[],int n)
 
 	QUEUE *qP=NULL;
 	init(&qP);
-	enqueue(qP,0);
-	visited[0]=1;
-	distance[0]=0;
-	parent[0]=-1;
+	enqueue(qP,v);
+	visited[v]=1;
+	distance[v]=0;
+	parent[v]=-1;
 	printf("\nBFS Traversal:");
 	while(!isempty(qP))
 	{
@@ -156,13 +155,29 @@ void BFS(node *adj_list[],int n)
 			temp=temp->next;
 		}
 	}
+	for(i=0;i<n;i++)
+		printf("\n %d=parent(%d)",parent[i],i);
+}
+
+void print_path(int parent[],int start,int end)
+{
+	if(start==end)
+		printf(" %d",start);
+	else if(parent[end]==-1)
+		printf("\nNo path from %d to %d exists",start,end);
+	else
+	{
+		print_path(parent,start,parent[end]);
+		printf(" %d",end);
+	}
 }
 
 int main()
 {
 	edg edges[100];
+	int parent[100];
 	node *adj_list[100];
-	int i,m,n;
+	int i,m,n,a,b,v;
 	printf("Input number of vertices:");
 	scanf("%d",&n);
 	for(i=0;i<100;i++)
@@ -176,7 +191,14 @@ int main()
 		scanf(" %d",&edges[i].second);
 	}
 	create_list(adj_list,n,edges,m);
-	BFS(adj_list,n);
+	printf("Input vertex for BFS:");
+	scanf(" %d",&v);
+	BFS(adj_list,n,parent,v);
+	printf("\n");
+	printf("Input vertices for path:");
+	scanf(" %d",&a);
+	scanf(" %d",&b);
+	print_path(parent,a,b);
 
 
 
