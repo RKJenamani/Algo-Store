@@ -17,13 +17,13 @@ float min(float a, float b)
 
 float distance(point i, point j)
 {
-	//printf("\n%f",sqrt( (i.x-j.x)*(i.x-j.x)+(i.y-j.y)*(i.y-j.y) ));
+	//printf("\n (%d,%d) & (%d,%d): %f",i.x,i.y,j.x,j.y,sqrt( (i.x-j.x)*(i.x-j.x)+(i.y-j.y)*(i.y-j.y) ));
 	return sqrt( (i.x-j.x)*(i.x-j.x)+(i.y-j.y)*(i.y-j.y) );
 }
 
 void mergeX(point a[],int lower,int middle,int upper)
 {
-	point b[100],c[100];
+	point b[10000],c[10000];
 	int i,j,k,h1,h2;
 	h1=0;
 	for(i=lower;i<=middle;i++)
@@ -61,7 +61,7 @@ void merge_sortX(point a[],int lower,int upper)
 
 void mergeY(point a[],int lower,int middle,int upper)
 {
-	point b[100],c[100];
+	point b[10000],c[10000];
 	int i,j,k,h1,h2;
 	h1=0;
 	for(i=lower;i<=middle;i++)
@@ -107,6 +107,7 @@ float explore_strip(point strip[], int size, float current_minimum)
 			if(distance(strip[j],strip[i])<new_minimum)
 				new_minimum=distance(strip[j],strip[i]);
 	}
+	return new_minimum;
 }
 float closest_pair(point arrayX[],point arrayY[], int l, int r)
 {
@@ -127,11 +128,11 @@ float closest_pair(point arrayX[],point arrayY[], int l, int r)
 	else
 	{
 		int mid=(l+r)/2;
-		point arrayY_l[100],arrayY_r[100];
+		point arrayY_l[10000],arrayY_r[10000];
 		int i,j=0,k=0;
 		for(i=0;i<=r-l;i++)
 		{
-			if(arrayY[i].x<arrayX[mid].x)
+			if(arrayY[i].x<=arrayX[mid].x)
 				arrayY_l[j++]=arrayY[i];
 			else
 				arrayY_r[k++]=arrayY[i];
@@ -139,14 +140,16 @@ float closest_pair(point arrayX[],point arrayY[], int l, int r)
 		float a=closest_pair(arrayX,arrayY_l,l,mid);
 		float b=closest_pair(arrayX,arrayY_r,mid+1,r);
 		float minimum=min(a,b);
-		point strip[100];
+		point strip[10000];
 		j=0;
 		for(i=0;i<=r-l;i++)
 		{
 			if(abs(arrayY[i].x-arrayX[mid].x)<minimum)
 				strip[j++]=arrayY[i];
 		}
+		//printf("\n Current minimum:%f ",minimum);
 		minimum=explore_strip(strip,j,minimum);
+		//printf("  New minimum:%f \n",minimum);
 		return minimum;
 
 
@@ -159,7 +162,7 @@ int main()
 	point arrayY[] = {{2, 3}, {12, 30}, {40, 50}, {5, 1}, {12, 10}, {3, 4}};
 	int n = sizeof(arrayX) / sizeof(arrayX[0]); */
 	int n,i;
-	point arrayX[100],arrayY[100];
+	point arrayX[10000],arrayY[10000];
 	printf("Input number of points:");
 	scanf("%d",&n);
 	for(i=0;i<n;i++)

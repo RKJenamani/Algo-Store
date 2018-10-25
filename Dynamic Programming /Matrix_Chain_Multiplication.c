@@ -1,30 +1,48 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+void print_brackets(int brackets[100][100],int i, int j)
+{
+	if(i==j)
+		printf("A");
+	else
+	{
+		printf("(");
+		print_brackets(brackets,i,brackets[i][j]);
+		print_brackets(brackets,brackets[i][j]+1,j);
+		printf(")");
+	}
+}
+
 int main()
 {
 	int a[100];
-	int DP[100][100];
-	int i,j,k,n,min,h;
-	printf("Input number of matrices+1: ");
+	int DP[100][100],brackets[100][100];
+	int i,j,k,n,l,q;
+	printf("Input number of matrices: ");
 	scanf("%d",&n);
-	printf("Input array of Dimensions: ");
-	for(i=1;i<=n;i++)
+	printf("Input array of Dimensions (%d dimensions): ",n+1);
+	for(i=0;i<=n;i++)
 		scanf("%d",&a[i]);
 	for(i=1;i<=n;i++)
 		DP[i][i]=0;
-	for(h=1;h<n-1;h++)
-		for(i=1;i<=n-h-1;i++)
+	for(l=2;l<=n;l++)
+		for(i=1;i<=n-l+1;i++)
 		{
-			j=i+h;
-			min=DP[i][i]+DP[i+1][j]+a[i]*a[i+1]*a[j+1];
-			for(k=i+1;k<j;k++)
+			j=l+i-1;
+			DP[i][j]=100000;
+			for(k=i;k<j;k++)
 			{
-				if((DP[i][k]+DP[k+1][j]+a[i]*a[k+1]*a[j+1])<min)
-					min=(DP[i][k]+DP[k+1][j]+a[i]*a[k+1]*a[j+1]);
+				q=a[i-1]*a[k]*a[j]+DP[i][k]+DP[k+1][j];
+				if(q<DP[i][j])
+				{
+					DP[i][j]=q;
+					brackets[i][j]=k;
+				}
 			}
-			DP[i][j]=min;
 		}
-	printf("\nMinimum number of operations required is: %d",DP[1][n-1]);
+	printf("\nMinimum number of operations required is: %d",DP[1][n]);
+	printf("\nThe brackets must be printed in the order: ");
+	print_brackets(brackets,1,n);
 	return 0;
 }

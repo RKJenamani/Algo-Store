@@ -21,7 +21,6 @@ void chainhash_input(NODEPTR table[],int len)
 		printf("INPUT NUMBER:");
 		scanf("%d",&input);
 		index=input%len;	
-		printf("%d",index);
 		if(table[index]==NULL)
 		{
 		    table[index]=(NODEPTR)malloc(sizeof(NODE));
@@ -67,7 +66,6 @@ NODEPTR chainhash_search(NODEPTR table[],int len,int input,NODEPTR *prev)
 		return NULL;
 	if(temp->key==input)
 	{
-		printf("FOUND");
 		flag=1;
 		(*prev)=NULL;
 		return temp;
@@ -76,7 +74,6 @@ NODEPTR chainhash_search(NODEPTR table[],int len,int input,NODEPTR *prev)
 	{
 		if(temp->key==input)
 		{
-			printf("FOUND");
 			flag=1;
 			return temp;
 		}
@@ -84,8 +81,6 @@ NODEPTR chainhash_search(NODEPTR table[],int len,int input,NODEPTR *prev)
 		temp=temp->next;
 	}
 	
-	if(flag==0)
-		printf("NOT FOUND");
 	return NULL;
 
 }
@@ -100,17 +95,19 @@ void chainhash_delete(NODEPTR table[],int len)
 	temp=chainhash_search(table,len,input,&prev);
 	if(temp!=NULL)
 	{
+		printf("%d DELETED",temp->key);
 		if(prev==NULL)
 		{
 			table[index]=temp->next;
 		}
 		else
 		{
-			printf("%d--%d",prev->key,temp->key);
 			prev->next=temp->next;
 			temp->next=NULL;
 		}
 	}
+	else
+		printf("NUMBER NOT FOUND");
 
 
 }
@@ -124,7 +121,7 @@ void main()
 				table[i]=NULL;
 		while(control!=0)
 		{
-			printf("Input 1 to input, 2 to display, 3 to delete, 0 to exit");
+			printf("\nInput 1 to input, 2 to display, 3 to delete, 0 to exit");
 			scanf("%d",&control);
 			if(control==1)
 				chainhash_input(table,5);

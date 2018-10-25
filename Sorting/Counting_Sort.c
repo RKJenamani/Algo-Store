@@ -13,11 +13,8 @@ int counting_sort(int a[],int b[],int n,int m)
 	}
 	for(i=1;i<=n;i++)
 		b[i]=b[i-1]+b[i];
-	for(i=0;i<m;i++)
-	{
-		//printf("%d ",b[i]);
-		output[--b[a[i]]]=a[i];
-	}
+	for(i=m-1;i>=0;i--)
+			output[--b[temp[i]]]=a[i];
 	for(i=0;i<m;i++)
 		a[i]=output[i];
 }

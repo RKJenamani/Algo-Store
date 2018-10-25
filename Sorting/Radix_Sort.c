@@ -1,9 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 
 int radix_sort(int a[],int b[],int n,int m)
 {
 	int i,j=0,output[100],temp[100],l=1;
+	int digtemp=0,ntemp=n;
+	while(ntemp!=0)
+	{
+		ntemp=ntemp/2;
+		digtemp++;
+	}
+	n=pow(10,digtemp);
 	while(l!=n)
 	{
 		for(i=0;i<=10;i++)
