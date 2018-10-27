@@ -162,6 +162,7 @@ int main()
 	point arrayY[] = {{2, 3}, {12, 30}, {40, 50}, {5, 1}, {12, 10}, {3, 4}};
 	int n = sizeof(arrayX) / sizeof(arrayX[0]); */
 	int n,i;
+	int hacktober_fest = 4;
 	point arrayX[10000],arrayY[10000];
 	printf("Input number of points:");
 	scanf("%d",&n);
