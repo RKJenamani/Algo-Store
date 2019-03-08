@@ -8,7 +8,7 @@ int radix_sort(int a[],int b[],int n,int m)
 	int digtemp=0,ntemp=n;
 	while(ntemp!=0)
 	{
-		ntemp=ntemp/2;
+		ntemp=ntemp/10;
 		digtemp++;
 	}
 	n=pow(10,digtemp);
