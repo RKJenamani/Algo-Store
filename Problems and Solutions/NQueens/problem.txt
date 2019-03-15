@@ -1,2 +1,0 @@
-The n-queens puzzle is the problem of placing n non-attacking queens on an nxn chessboard, for
-which solutions exist for all natural numbers n with the exception of n=2 and n=3.
