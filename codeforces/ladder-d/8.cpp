@@ -102,10 +102,6 @@ int main()
     map <pair<ii,ii>,ll > m;
     ll ans=fun(n1,n2,k1,k2,0,0,m);
     cout<<ans<<endl;
-    /*for(auto i:m)
-    {
-        cout<<"n1:"<<i.F.F.F<<" n2:"<<i.F.F.S<<" flag:"<< i.F.S.F<<" cont:"<< i.F.S.S<<" ans:"<<i.S<<"\n";
-    }*/
 }
 //dp[n1][n2][k][0]=dp[n1-1][n2][k-1][0]+if(k==1)dp[n1-1][n2][all possible last ele][1];
 //dp[n1][n2][k][1]=dp[n1][n2-1][k-1][0]+similar as above;
