@@ -7,6 +7,7 @@ void main()
 {
 	int a[100][100],S[100];
 	int n,sum,i,j;
+	int hacktober_fest = 5;
 	printf("Input value of n:");
 	scanf("%d",&n);
 	printf("Input set:");
